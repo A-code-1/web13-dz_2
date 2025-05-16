@@ -8,7 +8,9 @@
     {% include 'layouts/question.html' %}
     
     
-    {% include 'layouts/answer.html' %}
+    {% for answer in answers%}  
+        {% include 'layouts/answer.html' %}
+    {% endfor%}
     
 
     {% include 'layouts/pagination.html' %}

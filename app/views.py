@@ -46,10 +46,15 @@ def hot(request):
 
 def question(request, question_id):
     try:
-        answer = ANSWERS
         question = QUESTIONS[question_id]  
     except IndexError:
        raise Http404("Question not found")
-    return render(request, 'single_question.html', {'question': question, 'answer': answer})
+    return render(request, 'single_question.html', {'question': question})
 
+def answer(request, answer_id):
+    try:
+        answer = ANSWERS[answer_id]  
+    except IndexError:
+       raise Http404("Answer not found")
+    return render(request, 'single_question.html', {'answer': answer})
 
