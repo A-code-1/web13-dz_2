@@ -52,6 +52,8 @@ def question(request, question_id):
     return render(request, 'single_question.html', {'question': question})
 
 def answer(request, answer_id):
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(ANSWERS, 5)
     try:
         answer = ANSWERS[answer_id]  
     except IndexError:
