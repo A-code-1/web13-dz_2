@@ -1,0 +1,102 @@
+body {
+    background-color: #F0F4F8;
+    color: #2C3E50;
+    }
+
+.navbar {
+    background-color: #4A90E2;
+    }
+
+.card {
+    background-color: #FFFFFF;
+    }
+
+aside {
+    background-color: #DFF6F0;
+    }
+
+a {
+    color: #4A90E2;
+}
+
+a:hover {
+    color: #7ED6DF;
+}
+
+.btn-outline-success {
+    border-color: #FFDEE9;
+    color: #FFDEE9;
+}
+
+.btn-outline-success:hover {
+    background-color: #FFDEE9;
+    color: white;
+    font-weight: bold;
+}
+
+.logo-title {
+    color: #FFDEE9;
+    font-weight: bold;
+}
+
+.logo-title:hover {
+    color: #FFDEE9;
+    font-weight: bold;
+}
+
+.section-title {
+    color: #6BA292;
+}
+
+.badge-custom-blue {
+    background-color: #4A90E2;
+    color: white;
+}
+
+.badge-gradient-1 {
+    background: linear-gradient(135deg, #A1C4FD, #C2E9FB);
+    color: #2C3E50;
+}
+
+.badge-gradient-2 {
+    background: linear-gradient(135deg, #D4FC79, #96E6A1);
+    color: #2C3E50;
+}
+
+.badge-gradient-3 {
+    background: linear-gradient(135deg, #84FAB0, #8FD3F4);
+    color: #2C3E50;
+}
+
+.badge-gradient-4 {
+    background: linear-gradient(135deg, #FCCB90, #D57EEB);
+    color: #2C3E50;
+}
+
+.badge-gradient-5 {
+    background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+    color: #2C3E50;
+}
+
+.badge-gradient-6 {
+    background: linear-gradient(135deg, #C9FFBF, #FFAFBD);
+    color: #2C3E50;
+}
+
+.custom-like {
+    color: #6aa47c;
+    border-color: #6aa47c;
+}
+.custom-like:hover, .custom-like:checked {
+    background-color: #6aa47c;
+    color: white;
+}
+
+.custom-dislike {
+    color: #c77a7a;
+    border-color: #c77a7a;
+}
+.custom-dislike:hover, .custom-dislike:checked {
+    background-color: #c77a7a;
+    color: white;
+}

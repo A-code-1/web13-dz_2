@@ -1,0 +1,31 @@
+{% load static %}
+
+<article class="d-flex gap-3 flex-column">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-2">
+                    <div style="height: 100px;" class="border mb-2 w-100">
+                        <img src="{% static question.img_path %}" alt="Hello">
+                    </div>
+                    <div class="btn-group-vertical d-flex align-items-center">
+                        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
+                        <label class="btn custom-like" for="vbtn-radio1">Like | 1</label>
+                        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
+                        <label class="btn custom-dislike" for="vbtn-radio3">Dislike | 12</label>
+                    </div>
+                </div>
+                <div class="col d-flex flex-column justify-content-between"> 
+                    <p class="card-text">{{answer.text}}</p>    
+                    <div class="row">
+                        <div class="col">
+                            <span>Tags:</span>
+                            <span class="badge rounded-pill" style="background-color: #4A90E2; color: white">Tag</span>
+                            <span class="badge rounded-pill" style="background-color: #4A90E2; color: white">Tag</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
