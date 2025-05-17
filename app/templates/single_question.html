@@ -13,6 +13,18 @@
     {% endfor%}
     
     {% include 'layouts/pagination.html' %}
+
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <input type="Title" id="inputTitle6" class="form-control" placeholder="Enter your answer here" 
+            style="width: 300%; height: 200px;" maxlength="350" aria-describedby="TitleHelpInline">
+        </div>
+    </div>
+    <div class="d-grid gap-2 w-25 mb-3 mt-3">
+        <button class="btn btn-outline-send" type="button">Answer</button>
+    </div>
+
+
 {% endblock %}
 
         

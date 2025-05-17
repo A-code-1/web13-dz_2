@@ -1,0 +1,50 @@
+{% extends "layouts/base.html"%}
+
+{% load static %}
+
+
+{% block content %}
+<div class="row">
+    <section class="col">
+        <div class="d-flex align-items-center gap-2 mb-4">
+            <h1 class="section-title">New Questions</h1>
+        </div>
+        <article id="myForm" class="d-flex gap-3 flex-column">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputTitle" class="col-form-label section-title">Title</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="inputTitle6" class="form-control" placeholder="How to build a moon park?" 
+                    style="width: 300%;" maxlength="100" aria-describedby="TitleHelpInline">
+                </div>
+            </div>
+            <p id="error-message" class="error" style="color: red; font-weight: bold;"></p>
+        
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputText6" class="col-form-label section-title">Text</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="inputText6" class="form-control" placeholder="Really, how? Have no idea about it" 
+                    style="width: 300%; height: 300px;" maxlength="350" aria-describedby="TextHelpInline">
+                </div>
+            </div>
+        
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputTags6" class="col-form-label section-title">Tags</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="inputTags6" class="form-control" placeholder="moon, park, puzzle" 
+                    style="width: 300%;" maxlength="150" aria-describedby="TagsHelpInline">
+                </div>
+            </div>
+        
+            <div class="d-grid gap-2 w-25">
+                <button class="btn btn-outline-send" type="button" id="submitButton">ASK!</button>
+            </div>
+        </article>
+    </section>
+</div>
+{% endblock %}

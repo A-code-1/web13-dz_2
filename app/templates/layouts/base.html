@@ -15,11 +15,11 @@
         <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand logo-title " href="#">Mr. Ask</a>
+            <a class="navbar-brand logo-title " href="{% url 'index' %}">Mr. Ask</a>
             
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Ask!</button>
+                <a href="{% url 'new_question' %}" class="btn btn-outline-success">Ask!</a>
             </form>
             <div class="d-flex gap-2 align-items-center">
                 <div>
@@ -30,8 +30,8 @@
                         <div class="content__name">It's me</div>
                         <div class="content__links">
                             <div class="d-flex gap-2">
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Settings</a>
-                                <a href="#" class="btn btn-outline-danger btn-sm">Log out</a>
+                                <a href="{% url 'settings' %}" class="btn btn-outline-secondary btn-sm">Settings</a>
+                                <a href="{% url 'login' %}" class="btn btn-outline-danger btn-sm">Log out</a>
                             </div>
                         </div>
                     </div>

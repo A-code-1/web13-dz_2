@@ -1,0 +1,97 @@
+{% extends "layouts/base.html"%}
+
+{% load static %}
+{% block content %}
+<div class="row">
+    <section class="col vh-100">
+        <div class="d-flex align-items-center gap-2 mb-4 mt-2 section-title">
+            <h1>Settings: Mr. Ask</h1> 
+        </div>
+
+        <articles class="d-flex gap-3 flex-column">
+        <div class="container">
+            <div class="login-container">
+                <form id="loginForm">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputLogin6" class="col-form-label section-title m-4">Login</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="inputLogin6" class="form-control" placeholder="Enter your login here" 
+                             maxlength="25" aria-describedby="LoginHelpInline">
+                        </div>
+                    </div> 
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputEmail" class="col-form-label section-title m-4">Email </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="inputEmail" class="form-control" placeholder="Enter your Email here" 
+                             maxlength="25" aria-describedby="PasswordHelpInline">
+                        </div>
+                    </div> 
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputNickname6" class="col-form-label section-title m-1">NickName</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="inputNickname6" class="form-control" placeholder="Enter your NickName" 
+                             maxlength="25" aria-describedby="LoginHelpInline">
+                        </div>
+                    </div> 
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="formFile" class="col-form-label section-title m-3"><p>Upload<br>avatar</p></label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="mb-3">
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                        </div>
+                    </div> 
+
+                    <p id="error-message" class="error" style="color: red; font-weight: bold;"></p>
+                
+                    <button type="submit" class="btn btn-outline-success btn-block mt-4 mb-4">Save</button>
+                </form>
+                <script>
+                    document.getElementById('loginForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); 
+                
+                        const login = document.getElementById('inputLogin6').value.trim();
+                        const email = document.getElementById('inputEmail').value.trim();
+                        const nickname = document.getElementById('inputNickname6').value.trim();
+                        const errorMessage = document.getElementById('error-message');
+                
+                        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            
+                        let errors = [];
+                
+                        if (login === '') {
+                            errors.push('Login must contained symbols;');
+                        }
+                
+                        if (!emailRegex.test(email)) {
+                            errors.push('Enter correct email;');
+                        }
+                
+                        if (nickname === '') {
+                            errors.push('NickName must contained symbols;');
+                        }
+                
+                        if (errors.length > 0) {
+                            errorMessage.textContent = errors.join(' ');
+                        } else {
+                            errorMessage.textContent = '';
+                            alert('Its OK');
+                            // Для реальной отправки формы можно использовать:
+                            // event.target.submit();
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        </articles>
+    </section>
+</div>
+{% endblock %}

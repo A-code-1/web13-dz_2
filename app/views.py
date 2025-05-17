@@ -65,3 +65,15 @@ def question(request, question_id):
     except IndexError:
        raise Http404("Question not found")
     return render(request, 'single_question.html', {'question': question, 'answers': page.object_list, 'page': page})
+
+def new_question(request):
+        return render(request, 'new_question.html')
+
+def login(request):
+        return render(request, 'login.html')
+
+def signup(request):
+        return render(request, 'signup.html')
+
+def settings(request):
+        return render(request, 'settings.html')

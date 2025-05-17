@@ -1,0 +1,107 @@
+{% extends "layouts/base.html"%}
+
+{% load static %}
+
+
+{% block content %}
+<main class="container mt-2">
+    <div class="row">
+      <section class="col vh-100">
+        <div class="d-flex align-items-center gap-2 mb-4 mt-2 section-title">
+            <h1>Registration</h1> 
+        </div>
+
+        <articles class="d-flex gap-3 flex-column">
+        <div class="container">
+            <div class="signup-container">
+                <form id="registrationForm">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputLogin6" class="col-form-label section-title m-3">Login</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="inputLogin6" class="form-control" placeholder="Enter your login" 
+                             maxlength="25" aria-describedby="LoginHelpInline">
+                        </div>
+                    </div> 
+                
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputEmail6" class="col-form-label section-title m-3">Email</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="email" id="inputEmail6" class="form-control" placeholder="Enter your Email" 
+                             maxlength="50" aria-describedby="EmailHelpInline">
+                        </div>
+                    </div> 
+                    <p id="email-error-message" class="error" style="color: red; font-weight: bold;"></p>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputNickName6" class="col-form-label section-title mb-3 mt-3">NickName</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="inputNickName6" class="form-control" placeholder="Enter your NickName" 
+                            maxlength="25" aria-describedby="NickNameHelpInline">                                
+                        </div>
+                    </div> 
+                
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputPassword6" class="col-form-label section-title mt-3 mb-3">Password</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="password" id="inputPassword6" class="form-control" placeholder="********" 
+                             maxlength="25" aria-describedby="PasswordHelpInline">
+                        </div>
+                    </div> 
+                
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputRepeatPassword6" class="col-form-label section-title"><p>Repeat <br>password</p></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="password" id="inputRepeatPassword6" class="form-control mb-3" placeholder="Repeat your password" 
+                            maxlength="25" aria-describedby="RepeatPasswordHelpInline">
+                        </div>
+                    </div> 
+                
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="formFile" class="col-form-label section-title m-2"><p>Upload<br>avatar</p></label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="mb-3">
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                        </div>
+                    </div> 
+                
+                    <button type="submit" class="btn btn-outline-success btn-block mt-4 mb-4">Register!</button>
+                </form>
+                
+                <script>
+                    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); 
+
+                        const email = document.getElementById('inputEmail6').value;
+                        const emailErrorMessage = document.getElementById('email-error-message');
+                
+                        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                
+                        if (!emailRegex.test(email)) {
+                            emailErrorMessage.textContent = 'Enter the correct email';
+                        } else {
+                            emailErrorMessage.textContent = ''; 
+                            alert('Its OK');
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </articles>
+
+    </section>
+</div>
+</main>
+
+{% endblock %}
