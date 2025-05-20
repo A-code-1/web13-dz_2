@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 QUESTIONS = [
@@ -23,42 +23,16 @@ ANSWERS = [
 
 # Create your views here.
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 def index(request):
-    page_num = request.GET.get('page', 1)
-    paginator = Paginator(QUESTIONS, 5)
-
-    try:
-        page = paginator.page(page_num)
-    except PageNotAnInteger:
-        page = paginator.page(1)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
-
-    return render(request, 'index.html', {'questions': page.object_list, 'page': page})
+    page = paginate(request, QUESTIONS, per_page=5)
+    return render(request, template_name='index.html', context={'questions': page.object_list, 'page': page})
 
 def hot(request):
-    page_num = int(request.GET.get('page', 1))
-    paginator = Paginator(QUESTIONS, 5)
-    try:
-        page = paginator.page(page_num)
-    except PageNotAnInteger:
-        page = paginator.page(1)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
+    page = paginate(request, QUESTIONS, per_page=5)
     return render(request, template_name='hot.html', context={'questions': page.object_list, 'page': page})
 
 def question(request, question_id):
-    page_num = request.GET.get('page', 1)
-    paginator = Paginator(ANSWERS, 5)
-
-    try:
-        page = paginator.page(page_num)
-    except PageNotAnInteger:
-        page = paginator.page(1)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
+    page = paginate(request, ANSWERS, per_page=5)
 
     try:
         question = ANSWERS[question_id]  
@@ -77,3 +51,14 @@ def signup(request):
 
 def settings(request):
         return render(request, 'settings.html')
+
+def paginate(request, items_list, per_page=5):
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(items_list, per_page)
+    try:
+        page = paginator.page(page_num)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
+    return page
