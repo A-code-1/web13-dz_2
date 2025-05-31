@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ DEBUG = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'app' / 'static',
+    os.path.join(BASE_DIR / 'app' / 'static'),
 ]
 
 ALLOWED_HOSTS = []
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    #'django_extensions',
+    #'bootstrap5',
 ]
 
 STATIC_URL = '/static/'
@@ -82,7 +85,11 @@ WSGI_APPLICATION = 'askme_aandreeva.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'askme_andreeva',
+        'USER': "askme_andreeva_user",
+        'PASSWORD': "password",
+        'HOST': "localhost",
+        'PORT': "",
     }
 }
 
@@ -127,3 +134,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_ROOT = BASE_DIR / 'avatars'
+MEDIA_URL = 'avatars/'
