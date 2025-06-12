@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Qiestions by tag: {{ tag.name }}</h2>
+  
+  {% for question in questions %}
+    <div class="question">
+      <h3><a href="{% url 'question' question.id %}">{{ question.name }}</a></h3>
+      <p>{{ question.text|truncatechars:150 }}</p>
+      <p><strong>Теги:</strong>
+        {% for t in question.tag.all %}
+          <a href="{% url 'questions_by_tag' t.name %}">#{{ t.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+  {% endfor %}
+
+  {% include 'pagination.html' %}
+{% endblock %}

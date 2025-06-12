@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block content %}
-    <div class="d-flex align-items-center gap-2 mb-4">
-        <h1 class="section-title">{{ question.title }}</h1>
-    </div>
-    {% include 'layouts/question.html' %}
     
+    {% include 'layouts/question.html' with question=question %}
     
+    <hr class="my-4">
+    <h2>Answers</h2>
+
     {% for answer in answers%}  
-        {% include 'layouts/question.html' %}
+        {% include 'layouts/answer.html' with answer=answer %}
     {% endfor%}
     
     {% include 'layouts/pagination.html' %}
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="d-grid gap-2 w-25 mb-3 mt-3">
-        <button class="btn btn-outline-send" type="button">Answer</button>
+        <button class="btn btn-outline-primary" type="button">Answer</button>
     </div>
 
 

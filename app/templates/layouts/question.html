@@ -17,7 +17,7 @@
                 </div>
                 <div class="col d-flex flex-column justify-content-between">
                     <h5 class="card-title">
-                        <a href="{% url 'question' question.id %}">{{ question.title }}</a>
+                        <a href="{% url 'question' question.id %}">{{ question.name }}</a>
                     </h5>
                     <p class="card-text">{{ question.text }}</p>
                     <div class="row">
@@ -26,8 +26,9 @@
                         </div>
                         <div class="col">
                             <span>Tags:</span>
-                            <span class="badge rounded-pill" style="background-color: #4A90E2; color: white">Tag</span>
-                            <span class="badge rounded-pill" style="background-color: #4A90E2; color: white">Tag</span>
+                            {% for tag in question.tag.all %}
+                                <a class="badge rounded-pill" style="background-color: #4A90E2; color: white"href="{% url 'questions_by_tag' tag.name %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -35,3 +36,5 @@
         </div>
     </div>
 </article>
+
+

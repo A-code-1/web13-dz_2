@@ -84,14 +84,15 @@ WSGI_APPLICATION = 'askme_aandreeva.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'askme_andreeva',
-        'USER': "askme_andreeva_user",
-        'PASSWORD': "password",
-        'HOST': "localhost",
-        'PORT': "",
+        'USER': 'askme_andreeva_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation

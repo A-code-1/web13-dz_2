@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.urls import reverse
+
 # Create your models here.
 
 class QuestionManager(models.Manager):
@@ -36,6 +38,10 @@ class Question(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('question', kwargs={'question_id': self.id})
+
 
 class Answer(models.Model):
     objects = AnswerManager()
@@ -90,3 +96,4 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.nickname
+
