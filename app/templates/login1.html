@@ -1,0 +1,57 @@
+{% extends "layouts/base.html"%}
+
+{% load static %}
+
+
+{% block content %}
+<main class="container mt-2">
+    <div class="row">
+      <section class="col vh-100">
+        <div class="d-flex align-items-center gap-2 mb-4 mt-2 section-title">
+            <h1>Log In</h1> 
+        </div>
+
+        <articles class="d-flex gap-3 flex-column">
+        <div class="container">
+            <div class="login-container">
+                <form id="loginForm" action="/login/" method ="post" novalidate>
+                    {% csrf_token %}
+                   
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="id_username" class="col-form-label section-title ml-0 mb-3">Username</label>
+                        </div>
+                        <div class="col-auto">
+                        {{ form.username }}
+                        {{ form.username.errors }}
+                        </div>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="id_password" class="col-form-label section-title mt-3 mb-3">Password</label>
+                        </div>
+                        <div class="col-auto">
+                        {{ form.password }}
+                        {{ form.password.errors }}
+                        </div>
+                    </div>
+                
+                    <button type="submit" class="btn btn-outline-success btn-block mt-4 mb-4">Login</button>
+                
+                    <div class="mt-2">
+                        <a class="d-block link-offset-2 link-underline-opacity-100-hover" href="{% url 'signup' %}">create new account</a>
+                    </div>
+                </form>
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger mt-3">
+                {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </articles>
+</section>
+</div>
+</main>
+
+{% endblock %}

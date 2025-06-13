@@ -1,8 +1,26 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.contrib.auth import authenticate, login 
+from .forms import SignupForm, LoginForm
+from .models import Question, Answer, Tag, Profile
 
-from .models import Question, Answer, Tag
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            Profile.objects.create(
+                user=user,
+                nickname=form.cleaned_data.get("nickname"),
+                avatar=form.cleaned_data.get("avatar")
+            )
+            login(request, user) 
+            return redirect('/')  
+    else:
+        form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
 
 def paginate(request, items_list, per_page=5):
     page_num = request.GET.get('page', 1)
@@ -38,8 +56,8 @@ def question(request, question_id):
 def new_question(request):
     return render(request, 'new_question.html')
 
-def login(request):
-    return render(request, 'login.html')
+def login1(request):
+    return render(request, 'login1.html')
 
 def signup(request):
     return render(request, 'signup.html')
@@ -56,3 +74,29 @@ def questions_by_tag(request, tag_name):
         'page': page,
         'tag': tag,
     })
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)  
+                return redirect('/')  
+            else:
+                form.add_error(None, "Неверный логин или пароль")
+    else:
+        form = LoginForm()
+
+    return render(request, 'login1.html', {'form': form})
+ 
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')  

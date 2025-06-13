@@ -137,5 +137,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+MEDIA_URL = '/avatars/'
 MEDIA_ROOT = BASE_DIR / 'avatars'
-MEDIA_URL = 'avatars/'
