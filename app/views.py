@@ -11,11 +11,12 @@ def signup_view(request):
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
-            Profile.objects.create(
-                user=user,
-                nickname=form.cleaned_data.get("nickname"),
-                avatar=form.cleaned_data.get("avatar")
-            )
+            
+            profile = user.profile
+            profile.nickname = form.cleaned_data.get("nickname")
+            profile.avatar = form.cleaned_data.get("avatar")
+            profile.save()
+
             login(request, user) 
             return redirect('/')  
     else:

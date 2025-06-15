@@ -16,6 +16,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand logo-title " href="{% url 'index' %}">Mr. Ask</a>
+            <a class="btn btn-primary logo-title"  href="{% url 'new_question' %}">Ask your question!</a>
             <div class="d-flex gap-2 align-items-center">
                 {% if user.is_authenticated %}
                 <div class="d-flex align-items-center">
@@ -48,7 +49,7 @@
                         <div class="content__name">It's me</div>
                         <div class="content__links">
                             <div class="d-flex gap-2">
-                                <a href="{% url 'settings' %}" class="btn btn-outline-secondary btn-sm">Settings</a>
+                               
                                 <a href="{% url 'login1' %}" class="btn btn-outline-danger btn-sm">Log in</a>
                             </div>
                         </div>
